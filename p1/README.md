@@ -1,1 +1,2 @@
-# Project 1 READme.md file
+# Project 1
+# By: Nicola Gallagher
