@@ -10,7 +10,7 @@ $half_value = .50;
 
 # Define 5 more variables, which will each
 # represent how many of each coin is in the bank
-$pennies = 300;
+$pennies = 100;
 $nickels = 5;
 $dimes = 0;
 $quarters = 125;
@@ -39,6 +39,9 @@ $total = ($pennies * $penny_value) + ($nickels * $nickel_value) + ($dimes * $dim
     <p>
         You have $<?php echo $total; ?> in your piggy bank.
     </p>
+
+    <!-- Undefined variable error example -->
+    <!-- <?php echo $goal ?> -->
 
 </body>
 
