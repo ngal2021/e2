@@ -18,3 +18,5 @@ for($i = 0; $i < 9; $i++) {
 
 var_dump($playerCards);
 var_dump($computerCards);
+
+#making changes to see if git is still connected
