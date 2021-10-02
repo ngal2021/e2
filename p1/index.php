@@ -4,32 +4,32 @@
 $moves = ['rock', 'paper', 'scissors'];
 
 // For Player A, choose a random element from the moves array
-$player1Move = $moves[rand(0, 2)];
+$playerA_move = $moves[rand(0, 2)];
 
 // For Player B, choose a random element frm the moves array
-$player2Move = $moves[rand(0, 2)];
+$playerB_move = $moves[rand(0, 2)];
 
 // Debugging and checking process along the way
-var_dump($player1Move);
-var_dump($player2Move); 
+var_dump($playerA_move);
+var_dump($playerB_move); 
 
 // Compare Player A and Player B's moves to determine if it is a tie or if there is a winner.
 // If the moves match, it is a tie.
 // Else, compare the moves. Rock beats scissors, scissors beats paper, and paper beats rock.
-if ($player1Move == $player2Move) {
-    $winner ='Tie';
-} elseif ($player1Move == 'rock' and $player2Move == 'scissors') {
-    $winner = 'Player 1';
-} elseif ($player1Move == 'scissors' and $player2Move == 'paper') {
-    $winner = 'Player 1';
-} elseif ($player1Move == 'paper' and $player2Move == 'rock') {
-    $winner = 'Player 1';
-} elseif ($player1Move == 'scissors' and $player2Move == 'rock') {
-    $winner = 'Player 2';
-} elseif ($player1Move == 'paper' and $player2Move == 'scissors') {
-    $winner = 'Player 2';
-} elseif ($player1Move == 'rock' and $player2Move == 'paper') {
-    $winner = 'Player 2';
+if ($playerA_move == $playerB_move) {
+    $winner ='undetermined. Player A and Player B tie';
+} elseif ($playerA_move == 'rock' and $playerB_move == 'scissors') {
+    $winner = 'Player A';
+} elseif ($playerA_move == 'scissors' and $playerB_move == 'paper') {
+    $winner = 'Player A';
+} elseif ($playerA_move == 'paper' and $playerB_move == 'rock') {
+    $winner = 'Player A';
+} elseif ($playerA_move == 'scissors' and $playerB_move == 'rock') {
+    $winner = 'Player B';
+} elseif ($playerA_move == 'paper' and $playerB_move == 'scissors') {
+    $winner = 'Player B';
+} elseif ($playerA_move == 'rock' and $playerB_move == 'paper') {
+    $winner = 'Player B';
 }
 
 var_dump($winner);
