@@ -16,6 +16,21 @@ var_dump($player2Move);
 // Compare Player A and Player B's moves to determine if it is a tie or if there is a winner.
 // If the moves match, it is a tie.
 // Else, compare the moves. Rock beats scissors, scissors beats paper, and paper beats rock.
+if ($player1Move == $player2Move) {
+    var_dump('Tie');
+} elseif ($player1Move == 'rock' and $player2Move == 'scissors') {
+    var_dump('Player 1 wins');
+} elseif ($player1Move == 'scissors' and $player2Move == 'paper') {
+    var_dump('Player 1 wins');
+} elseif ($player1Move == 'paper' and $player2Move == 'rock') {
+    var_dump('Player 1 wins');
+} elseif ($player1Move == 'scissors' and $player2Move == 'rock') {
+    var_dump('Player 2 wins');
+} elseif ($player1Move == 'paper' and $player2Move == 'scissors') {
+    var_dump('Player 2 wins');
+} elseif ($player1Move == 'rock' and $player2Move == 'paper') {
+    var_dump('Player 2 wins');
+}
 // In the view, report the results: Player A's move, Player B's move, the winner
 
 require 'index-view.php';
