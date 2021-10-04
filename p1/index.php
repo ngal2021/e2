@@ -2,10 +2,10 @@
 
 $moves = ['rock', 'paper', 'scissors'];
 
-// Player A move selected
+// Select player A's move
 $playerA_move = $moves[rand(0, 2)];
 
-// Player B move selected
+// Select player B's move
 $playerB_move = $moves[rand(0, 2)];
 
 // Decide the winner

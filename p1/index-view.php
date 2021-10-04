@@ -3,8 +3,8 @@
 <h2>Mechanics</h2>
 <ul>
     <li>Player A and Player B randomly throw a move, either rock, paper, or scissors.</li>
-    <li>A tie is declared if both players throw the same move.</li>
-    <li>Otherwise: rock beats scissors, scissors beats paper, paper beats rock.</li>
+    <li>If the players throw the same move, and thus, a winner cannot be determined, a tied is declared.</li>
+    <li>Otherwise: rock beats scissors, scissors beats paper, and paper beats rock.</li>
 </ul>
 <h2>Results</h2>
 <ul>
