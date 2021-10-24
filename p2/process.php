@@ -8,10 +8,8 @@ $computerMove = ['rock', 'paper', 'scissors'][rand(0, 2)];
 
 $results = determineWinner($playerMove, $computerMove);
 
-$_SESSION['results'] = [
+$_SESSION['game'] = [
     'results' => $results,
-    'tie' => $tie,
-    'player' => $player,
     'playerMove' => $playerMove,
     'computerMove' => $computerMove,
 ];
