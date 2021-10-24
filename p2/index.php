@@ -8,6 +8,8 @@ if(isset($_SESSION['results'])){
     $tie = $results['tie'];
     $playerMove = $results['playerMove'];
     $computerMove = $results['computerMove'];
+
+    $_SESSION['results'] = null;
 }
 
 require 'index-view.php';

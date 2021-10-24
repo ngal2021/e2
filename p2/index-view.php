@@ -15,9 +15,12 @@
 
         <form method='POST' action='process.php'>
             
-            <input type='radio' id='rock' name='choice' value='rock' checked><label for='rock'>Rock</label>
-            <input type='radio' id='paper' name='choice' value='paper'><label for='paper'>Paper</label>
-            <input type='radio' id='scissors' name='choice' value='scissors'><label for='scissors'>Scissors</label>
+            <input type='radio' id='rock' name='choice' value='rock' 
+                <?php echo (!isset($playerMove) or $playerMove == 'rock') ? 'checked': '' ?>><label for='rock'>Rock</label>
+            <input type='radio' id='paper' name='choice' value='paper' 
+                <?php echo (isset($playerMove) and $playerMove == 'paper') ? 'checked': '' ?>><label for='paper'>Paper</label>
+            <input type='radio' id='scissors' name='choice' value='scissors' 
+                <?php echo (isset($playerMove) and $playerMove == 'scissors') ? 'checked': '' ?>><label for='scissors'>Scissors</label>
 
             <button type='submit'>Play Move</button>
         </form>
@@ -29,9 +32,9 @@
             <li>The other person threw <strong><?php echo $computerMove ?></strong>.</li>  
             <?php if($tie) { ?>
             <li>Your move is the same the other player's move. You tied!</li>
-            <?php } if($winner) { ?>
+            <?php } else if($winner) { ?>
             <li><strong><?php echo ucwords($playerMove) ?></strong> beats <strong><?php echo $computerMove ?></strong>. You won!</li>
-            <?php } if((! $winner) and (! $tie)) { ?>
+            <?php } else { ?>
             <li><strong><?php echo ucwords($playerMove) ?></strong> is beaten by <strong><?php echo $computerMove ?></strong>. You lost, please try again!</li>
             <?php } ?>
         </ul>
