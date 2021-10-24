@@ -6,15 +6,12 @@ $playerMove = $_POST['choice'];
 
 $computerMove = ['rock', 'paper', 'scissors'][rand(0, 2)];
 
-$tie = $playerMove == $computerMove;
-
-if (! $tie) {
-    $winner = determineWinner($playerMove, $computerMove);
-}
+$results = determineWinner($playerMove, $computerMove);
 
 $_SESSION['results'] = [
-    'winner' => $winner,
+    'results' => $results,
     'tie' => $tie,
+    'player' => $player,
     'playerMove' => $playerMove,
     'computerMove' => $computerMove,
 ];
@@ -23,10 +20,11 @@ header('Location: index.php');
 
 function determineWinner($playerMove, $computerMove)
 {
-    if ($playerMove == 'rock' and $computerMove == 'scissors' or $playerMove == 'scissors' and $computerMove == 'paper' or $playerMove == 'paper' and $computerMove == 'rock') {
-        $playerWon = true;
+    if ($playerMove == $computerMove) {
+        return 'tie';
+    } else if ($playerMove == 'rock' and $computerMove == 'scissors' or $playerMove == 'scissors' and $computerMove == 'paper' or $playerMove == 'paper' and $computerMove == 'rock') {
+        return 'player';
     } else {
-        $playerWon = false;
+        return 'computer';
     }
-    return $playerWon;
 }

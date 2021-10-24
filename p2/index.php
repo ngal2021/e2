@@ -4,8 +4,8 @@ session_start();
 
 if(isset($_SESSION['results'])){
     $results = $_SESSION['results'];
-    $winner = $results['winner'];
     $tie = $results['tie'];
+    $player = $results['player'];
     $playerMove = $results['playerMove'];
     $computerMove = $results['computerMove'];
 

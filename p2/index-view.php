@@ -30,9 +30,9 @@
         <ul>
             <li>You threw <strong><?php echo $playerMove ?></strong>.</li>
             <li>The other person threw <strong><?php echo $computerMove ?></strong>.</li>  
-            <?php if($tie) { ?>
+            <?php if($results == $tie) { ?>
             <li>Your move is the same the other player's move. You tied!</li>
-            <?php } else if($winner) { ?>
+            <?php } else if($results == $player) { ?>
             <li><strong><?php echo ucwords($playerMove) ?></strong> beats <strong><?php echo $computerMove ?></strong>. You won!</li>
             <?php } else { ?>
             <li><strong><?php echo ucwords($playerMove) ?></strong> is beaten by <strong><?php echo $computerMove ?></strong>. You lost, please try again!</li>
