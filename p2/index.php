@@ -2,7 +2,8 @@
 
 session_start();
 
-if(isset($_SESSION['game'])){
+# Extract game information, if game has been played
+if(isset($_SESSION['game'])) {
     $game = $_SESSION['game'];
     $results = $game['results'];
     $playerMove = $game['playerMove'];

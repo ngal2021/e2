@@ -4,9 +4,11 @@ session_start();
 
 $playerMove = $_POST['choice'];
 
+# Select computer's move
 $computerMove = ['rock', 'paper', 'scissors'][rand(0, 2)];
 
-$results = determineWinner($playerMove, $computerMove);
+# Determine outcome
+$results = determineOutcome($playerMove, $computerMove);
 
 $_SESSION['game'] = [
     'results' => $results,
@@ -16,7 +18,8 @@ $_SESSION['game'] = [
 
 header('Location: index.php');
 
-function determineWinner($playerMove, $computerMove)
+# Function determines if there is a tie or who the winner is
+function determineOutcome($playerMove, $computerMove)
 {
     if ($playerMove == $computerMove) {
         return 'tie';
