@@ -65,7 +65,7 @@
             <div class='spacer-xs'></div>
 
             <div class="row">
-                <button type='submit' test='game-submit' class='btn btn-block btn-secondary'>Play Move</button>
+                <button type='submit' test='game-submit' class='btn btn-block btn-dark'>Play Move</button>
             </div>
 
         </form>

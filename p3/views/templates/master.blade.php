@@ -29,7 +29,7 @@
         </header>
 
 
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="/">Game</a>
             @yield('nav-bar')
         </nav>
