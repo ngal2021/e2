@@ -91,4 +91,51 @@ class AppController extends Controller
 
         return $this->app->view('round', ['round' => $round]);
     }
+
+    public function statistics()
+    {
+        $roundsCount = count($this->app->db()->all('rounds'));
+
+        $tiesCount = count(($this->app->db()->findByColumn('rounds', 'tie', '=', '1'))); 
+        $tiesPercent = round($tiesCount / $roundsCount * 100);
+        
+        $playerWonCount = count(($this->app->db()->findByColumn('rounds', 'won', '=', '1')));
+        $playerWonPercent = round($playerWonCount / $roundsCount * 100);
+
+        $computerWonCount = $roundsCount - $playerWonCount - $tiesCount;
+        $computerWonPercent = round($computerWonCount / $roundsCount * 100);
+
+        $rockMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'rock')));
+        $paperMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'paper')));
+        $scissorsMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'scissors')));
+
+        $rockPercent = round($rockMoves / $roundsCount * 100);
+        $paperPercent = round($paperMoves / $roundsCount * 100);
+        $scissorsPercent = round($scissorsMoves / $roundsCount * 100);
+
+        if ($rockPercent > $paperPercent and $rockPercent > $scissorsPercent) {
+            $mostPlayed = 'rock';
+        } elseif ($paperPercent > $rockPercent and $paperPercent > $scissorsPercent) {
+            $mostPlayed = 'paper';
+        } elseif ($scissorsPercent > $rockPercent and $scissorsPercent > $paperPercent) {
+            $mostPlayed = 'scissors';
+        } else {
+            $mostPlayed = 'Undetermined';
+        }
+        
+        return $this->app->view('statistics', [
+            'roundsCount' => $roundsCount, 
+            'tiesCount' => $tiesCount, 
+            'tiesPercent' => $tiesPercent, 
+            'playerWonCount' => $playerWonCount, 
+            'playerWonPercent' => $playerWonPercent, 
+            'computerWonCount' => $computerWonCount, 
+            'computerWonPercent' => $computerWonPercent,
+            'rockPercent' => $rockPercent, 
+            'paperPercent' => $paperPercent, 
+            'scissorsPercent' => $scissorsPercent,
+            'mostPlayed' => $mostPlayed
+        ]);
+    }
+
 }

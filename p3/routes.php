@@ -8,4 +8,5 @@ return [
     '/process' => ['AppController', 'process'],
     '/history' => ['AppController', 'history'],
     '/round' => ['AppController', 'round'],
+    '/statistics' => ['AppController', 'statistics'],
 ];

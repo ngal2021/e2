@@ -24,18 +24,27 @@
 
 
 .page-margin {
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-bottom: 50px;
-    padding-top: 20px;
-}
-
-.top-navigation {
-    background-color:rgb(34, 34, 34)y;
+    padding: 20px;
 }
 
 .navbar-brand {
     margin-right: 20px;
     margin-left: 20px;
     font-size: medium;
+}
+
+.spacer-xs {
+    padding: 5px;
+}
+
+.spacer-small {
+    padding: 10px;
+}
+
+.spacer-medium {
+    padding: 30px;
+}
+
+.stats-image {
+    width: 80px;
 }
