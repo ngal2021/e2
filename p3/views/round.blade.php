@@ -6,20 +6,30 @@
 
 @section('content')
     <h2>Round Details</h2>
-    <a href='/history'>Return to round history</a>
+
+    <a test='history-nav-round' href='/history'>Return to round history</a>
 
     <ul>
-        <li><b>Round id:</b> {{ $round['id'] }}</li>
-        <li><b>Player's move:</b> {{ $round['playerMove'] }}</li>
-        <li><b>Computer's move:</b> {{ $round['computerMove'] }}</li>
+
+        <li><b>Round id:</b> <span test='round-id'>{{ $round['id'] }}</span></li>
+
+        <li><b>Player's move:</b> <span test='player-move'>{{ $round['playerMove'] }}</span></li>
+
+        <li><b>Computer's move:</b> <span test='computer-move'>{{ $round['computerMove'] }}</span></li>
+
         @if ($round['tie'])
-            <li><b>Result:</b> The player and the computer tied.</li>
+            <li test='tie-output'><b>Result:</b> The player and the computer tied.</li>
         @elseif ($round['won'])
-            <li><b>Result:</b> The player won!</li>
+            <li test='won-output'><b>Result:</b> The player won!</li>
         @else
-            <li><b>Result:</b> The computer won!</li>
+            <li test='lost-output'><b>Result:</b> The computer won!</li>
         @endif
+
         <li><b>Timestamp:</b> {{ $round['timestamp'] }}</li>
 
     </ul>
+@endsection
+
+@section('nav-bar')
+    <a class="navbar-brand" href="/history">Game History</a>
 @endsection

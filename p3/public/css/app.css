@@ -1,5 +1,9 @@
-#logo {
-    width:300px;
+#app-logo {
+    width: 300px;
+}
+
+.radio-image {
+    width: 45px;
 }
 
 .results {
@@ -16,4 +20,22 @@
 
 .lost {
     color: red;
+}
+
+
+.page-margin {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+.top-navigation {
+    background-color:rgb(34, 34, 34)y;
+}
+
+.navbar-brand {
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: medium;
 }

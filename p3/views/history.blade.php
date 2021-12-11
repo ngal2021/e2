@@ -5,11 +5,15 @@
 @endsection
 
 @section('content')
-    <h2>Round History</h2>
-    <a href='/'>Home</a>
+    <h2 test='history-title'>Round History</h2>
+    <a test='home-nav' href='/'>Home</a>
     <ul>
         @foreach ($rounds as $round)
-            <li><a href='/round?id={{ $round['id'] }}'>{{ $round['timestamp'] }}</a></li>
+            <li><a test='round-link' href='/round?id={{ $round['id'] }}'>{{ $round['timestamp'] }}</a></li>
         @endforeach
     </ul>
+@endsection
+
+@section('nav-bar')
+    <a class="navbar-brand" href="/">Home</a>
 @endsection

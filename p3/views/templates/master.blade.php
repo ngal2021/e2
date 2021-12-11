@@ -20,15 +20,40 @@
 
 <body>
 
-    <header>
-        <h1>{{ $app->config('app.name') }}</h1>
-    </header>
+    <div class='page-margin'>
 
-    <main>
-        @yield('content')
-    </main>
+        <div class='container'>
 
-    @yield('body')
+            <div class='row'>
+
+                <div class='col'></div>
+
+                <div class='col'>
+                    <header>
+                        <h1>
+                            <img id='app-logo' src='/images/rps_game_logo.png'
+                                alt='{{ $app->config('app.name') }} Game'>
+                        </h1>
+                    </header>
+                </div>
+                <div class='col'></div>
+            </div>
+        </div>
+
+        <main>
+            @yield('content')
+        </main>
+
+        @yield('body')
+
+        <nav class="navbar fixed-bottom navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Rock, Paper, Scissors Game</a>
+            @yield('nav-bar')
+        </nav>
+
+
+    </div>
+
 
 </body>
 
