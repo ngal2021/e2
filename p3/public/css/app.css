@@ -1,3 +1,5 @@
+/* Image sizing */
+
 #app-logo {
     width: 300px;
 }
@@ -6,31 +8,41 @@
     width: 45px;
 }
 
-.results {
-    font-weight: bold;
+.stats-image {
+    width: 80px;
 }
+
+
+/* Results styling */
 
 .tie {
     color: rgb(167, 137, 0);
+    font-weight: bold;
 }
 
 .won {
     color: green;
+    font-weight: bold;
 }
 
 .lost {
     color: red;
+    font-weight: bold;
 }
 
 
-.page-margin {
-    padding: 20px;
-}
-
+/* Navigation bar styling */
 .navbar-brand {
     margin-right: 20px;
     margin-left: 20px;
     font-size: medium;
+}
+
+
+/* Page margin and spacing */
+
+.page-margin {
+    padding: 20px;
 }
 
 .spacer-xs {
@@ -45,6 +57,13 @@
     padding: 30px;
 }
 
-.stats-image {
-    width: 80px;
+
+/* Hyperlink styling */
+
+a {
+    color: rgb(0, 10, 200);
+}
+
+a:hover {
+    color: rgb(0, 17, 87);
 }

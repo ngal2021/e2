@@ -14,6 +14,7 @@ class P3Cest
         $I->comment('The player selected the move: ' . $playerMove);
         $I->comment('The computer selected the move: ' . $computerMove);
 
+        // Check that the correct styling is outputted depending on the result
         if ($playerMove == $computerMove) {
             $I->seeElement('[test=tie-output]');
             $result = 'Tie';
@@ -79,6 +80,7 @@ class P3Cest
         $I->comment('Player move: ' . $playerMove);
         $I->comment('Computer move: ' . $computerMove);
 
+        // Ensure that the correct styling is outputted for the result
         if ($playerMove == $computerMove) {
             $I->seeElement('[test=tie-output]');
             $result = 'Tie';
@@ -98,5 +100,71 @@ class P3Cest
         $I->amOnPage('/round?id=10');
         $I->click('[test=history-nav-round]');
         $I->seeElement('[test=history-title]');
+    }
+
+    public function statisticsPageLogic(AcceptanceTester $I)
+    {
+        $I->amOnPage('/statistics');
+
+        $I->seeElement('[test=statistics-title]');
+
+        $roundsCount = $I->grabTextFrom('[test=rounds-count]');
+
+        $I->seeElement('[test=most-played-image]');
+        $mostPlayedDisplayed = strtolower($I->grabTextFrom('[test=most-played]'));
+
+        $playerWonCount = $I->grabTextFrom('[test=player-won-count]');
+        $tieCount = $I->grabTextFrom('[test=tie-count]');
+        $computerWonCount = $I->grabTextFrom('[test=computer-won-count]');
+
+        $totalCount = $playerWonCount + $tieCount + $computerWonCount;
+
+        // Compare rounds counts for accuracy
+        $I->comment('Total rounds count: ' . $roundsCount);
+        $I->comment('Total rounds count from result breakdown: ' . $roundsCount);
+
+        if ($roundsCount == $roundsCount) {
+            $I->comment('Rounds numbers are correct!');
+        } else {
+            $I->comment('Rounds numbers are incorrect!');
+        }
+
+
+        $playerWonPercent = $I->grabTextFrom('[test=player-won-percent]');
+        $tiePercent = $I->grabTextFrom('[test=tie-percent]');
+        $computerWonPercent = $I->grabTextFrom('[test=computer-won-percent]');
+
+        $totalPercent = $playerWonPercent + $tiePercent + $computerWonPercent;
+
+        // Compare result percent with 100
+        $I->comment('Total results percent (should be ~100 due to rounding): ' . $totalPercent);
+
+        $rockChoice = $I->grabTextFrom('[test=rock-choice]');
+        $paperChoice = $I->grabTextFrom('[test=paper-choice]');
+        $scissorsChoice = $I->grabTextFrom('[test=scissors-choice]');
+
+        // Compare result percent with 100
+        $ChoicePercent = $rockChoice + $paperChoice + $scissorsChoice;
+        $I->comment('Total moves choice percent (should be ~100 due to rounding): ' . $ChoicePercent);
+        
+        if ($rockChoice > $paperChoice and $rockChoice > $scissorsChoice) { 
+            $mostPlayedPercent = 'rock';
+        } elseif ($paperChoice > $rockChoice and $rockChoice > $scissorsChoice) {
+            $mostPlayedPercent = 'paper';
+        } elseif ($scissorsChoice > $rockChoice and $scissorsChoice > $paperChoice) {
+            $mostPlayedPercent = 'scissors';
+        }
+        
+        // Compare most played statistics for accuracy
+        if ($mostPlayedDisplayed == $mostPlayedPercent)
+        $I->comment('Most played displayed: ' . $mostPlayedDisplayed);
+        $I->comment('Most played calculated: ' . $mostPlayedPercent);
+
+        if ($mostPlayedDisplayed == $mostPlayedPercent) {
+            $I->comment('Most played is correct!');
+        } else {
+            $I->comment('Most played is incorrect!');
+        }
+        
     }
 }

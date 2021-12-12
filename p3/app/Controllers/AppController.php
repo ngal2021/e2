@@ -3,9 +3,8 @@ namespace App\Controllers;
 
 class AppController extends Controller
 {
-    /**
-     * This method is triggered by the route "/"
-     */
+
+
     public function index()
     {
         $playerMove = $this->app->old('playerMove');
@@ -22,6 +21,7 @@ class AppController extends Controller
             'tie' => $tie
         ]);
     }
+
 
     public function process()
     {
@@ -46,6 +46,7 @@ class AppController extends Controller
                 $won = True;
             }
 
+            // Insert processed form data into database
             $this->app->db()->insert('rounds', [
                 'playerMove' => $playerMove,
                 'computerMove' => $computerMove,
@@ -65,8 +66,10 @@ class AppController extends Controller
     
     }
 
+
     public function determineOutcome($playerMove, $computerMove)
     {
+        // Compare player and computer moves to return winner/result
         if ($playerMove == $computerMove) {
             return 'tie';
         } else if ($playerMove == 'rock' and $computerMove == 'scissors' or $playerMove == 'scissors' and $computerMove == 'paper' or $playerMove == 'paper' and $computerMove == 'rock') {
@@ -76,15 +79,19 @@ class AppController extends Controller
         }
     }
 
+
     public function history() 
     {
+        // Retrieve and output all rounds from database
         $rounds = $this->app->db()->all('rounds');
 
         return $this->app->view('history', ['rounds' => $rounds]);
     }
 
+
     public function round() 
     {
+        // Retrieve and output details of a specific round
         $id = $this->app->param('id');
 
         $round = $this->app->db()->findById('rounds', $id);
@@ -92,27 +99,35 @@ class AppController extends Controller
         return $this->app->view('round', ['round' => $round]);
     }
 
+
     public function statistics()
     {
+        // Total number of rounds
         $roundsCount = count($this->app->db()->all('rounds'));
 
+        // Number and percentage of ties
         $tiesCount = count(($this->app->db()->findByColumn('rounds', 'tie', '=', '1'))); 
         $tiesPercent = round($tiesCount / $roundsCount * 100);
         
+        // Number and percentage of player wins        
         $playerWonCount = count(($this->app->db()->findByColumn('rounds', 'won', '=', '1')));
         $playerWonPercent = round($playerWonCount / $roundsCount * 100);
 
+        // Number and percentage of computer wins   
         $computerWonCount = $roundsCount - $playerWonCount - $tiesCount;
         $computerWonPercent = round($computerWonCount / $roundsCount * 100);
 
+        // Number of times player plays a certain move
         $rockMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'rock')));
         $paperMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'paper')));
         $scissorsMoves = count(($this->app->db()->findByColumn('rounds', 'playerMove', '=', 'scissors')));
 
+        // Percentage of times player plays a certain move
         $rockPercent = round($rockMoves / $roundsCount * 100);
         $paperPercent = round($paperMoves / $roundsCount * 100);
         $scissorsPercent = round($scissorsMoves / $roundsCount * 100);
 
+        // Determine the player's most played move
         if ($rockPercent > $paperPercent and $rockPercent > $scissorsPercent) {
             $mostPlayed = 'rock';
         } elseif ($paperPercent > $rockPercent and $paperPercent > $scissorsPercent) {
@@ -120,7 +135,7 @@ class AppController extends Controller
         } elseif ($scissorsPercent > $rockPercent and $scissorsPercent > $paperPercent) {
             $mostPlayed = 'scissors';
         } else {
-            $mostPlayed = 'Undetermined';
+            $mostPlayed = 'undetermined';
         }
         
         return $this->app->view('statistics', [
